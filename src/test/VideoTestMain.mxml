@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+				xmlns:flexUnitUIRunner="http://www.adobe.com/2009/flexUnitUIRunner"
+				creationComplete="runTests();"
+				width="1100" height="650"
+				layout="absolute">
+
+	<mx:Script>
+		import org.flexunit.listeners.CIListener;
+		import org.flexunit.runner.FlexUnitCore;
+
+		import tests.VideoTestSuite;
+
+		public function runTests():void
+		{
+			var core:FlexUnitCore = new FlexUnitCore();
+			core.addListener( uiListener );
+			core.addListener( new CIListener() );
+			core.run( VideoTestSuite );
+		}
+	</mx:Script>
+	<flexUnitUIRunner:TestRunnerBase id="uiListener" width="100%" height="100%"/>
+</mx:Application>
